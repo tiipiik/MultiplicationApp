@@ -20,7 +20,7 @@ def new_operation():
     global operand_result
 
     first_number = randrange(10)
-    secondumber = randrange(10)
+    second_number = randrange(10)
     operation = str(first_number) + 'x' + str(second_number)
     operand_result = first_number*second_number
 
@@ -40,7 +40,7 @@ class Computer(QtGui.QWidget):
         self.layout = QtGui.QVBoxLayout()
         self.layout.setAlignment(QtCore.Qt.AlignTop)
         # Create main zone, with start button and count zone
-        self.menu = QtGui.QHBoxLayout()
+        menu = QtGui.QHBoxLayout()
         # Create the question line with label and line edit
         self.question_line = QtGui.QHBoxLayout()
         self.question_line.setMargin(0)
