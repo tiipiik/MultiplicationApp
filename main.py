@@ -9,20 +9,20 @@ from PyQt4 import Qt, QtCore, QtGui
 from PyQt4.QtCore import pyqtSlot
 from random import randrange
 
-personalScore = 0
+personal_score = 0
 attempts = 0
 
 
 def new_operation():
-    global firstNumber
-    global secondNumber
+    global first_number
+    global second_number
     global operation
-    global operandResult
+    global operand_result
 
-    firstNumber = randrange(10)
-    secondNumber = randrange(10)
-    operation = str(firstNumber) + 'x' + str(secondNumber)
-    operandResult = firstNumber*secondNumber
+    first_number = randrange(10)
+    secondumber = randrange(10)
+    operation = str(first_number) + 'x' + str(second_number)
+    operand_result = first_number*second_number
 
 
 class Computer(QtGui.QWidget):
@@ -65,7 +65,7 @@ class Computer(QtGui.QWidget):
         self.button_start.value = 1
         self.button_start.clicked.connect(self.make_reset_app)
         # Score
-        self.score = Qt.QLabel(str(personalScore) + '/' + str(attempts))
+        self.score = Qt.QLabel(str(personal_score) + '/' + str(attempts))
         self.score.setAlignment(QtCore.Qt.AlignRight)
         # Line with question label and line edit for user answer
         self.question_label = QtGui.QLabel(operation)
@@ -124,11 +124,11 @@ class Computer(QtGui.QWidget):
         else:
             try:
                 answer = int(answer)
-                self.result.setText('You said ' + str(answer) + ', result was ' + str(operandResult))
-                if int(answer) == int(operandResult):
+                self.result.setText('You said ' + str(answer) + ', result was ' + str(operand_result))
+                if int(answer) == int(operand_result):
                     # Update score
-                    global personalScore
-                    personalScore += 1
+                    global personal_score
+                    personal_score += 1
                     image = 'well-done.png'
                 else:
                     image = 'hum.png'
@@ -150,7 +150,7 @@ class Computer(QtGui.QWidget):
             # Update attempts
             global attempts
             attempts += 1
-            self.score.setText(str(personalScore) + '/' + str(attempts))
+            self.score.setText(str(personal_score) + '/' + str(attempts))
         
         # In all cases, show text message
         self.result.show()
@@ -161,9 +161,9 @@ class Computer(QtGui.QWidget):
         source = self.sender()
 
         if source.value == 1:
-            global personalScore
+            global personal_score
             global attempts
-            personalScore = 0
+            personal_score = 0
             attempts = 0
             self.score.setText('0/0')
 
